@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create Your JAL Account</title>
+  <link rel="stylesheet" href="assets/css/account.css">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Montserrat:wght@300;400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+  <style>
+    /* Basic Reset */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Cinzel', serif, 'Roboto', sans-serif;
+      background: #f5f5f5;
+      color: #333;
+      padding: 20px;
+    }
+
+    .account-creation-container {
+      max-width: 600px;
+      margin: 0 auto;
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    /* Tab Buttons */
+    .account-type-tabs {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    .tab-button {
+      background: #d4af37;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      margin: 0 5px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .tab-button:hover,
+    .tab-button.active {
+      background: #b8922b;
+    }
+
+    /* Account Form Styles */
+    .account-form {
+      display: none;
+    }
+
+    .account-form.active {
+      display: block;
+    }
+
+    .account-form form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .account-form label {
+      margin: 10px 0 5px;
+    }
+
+    .account-form input[type="text"],
+    .account-form input[type="email"],
+    .account-form textarea {
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .account-form input[readonly] {
+      background: #eee;
+    }
+
+    .account-form input[type="file"] {
+      padding: 3px;
+    }
+
+    .account-form textarea {
+      resize: vertical;
+      min-height: 80px;
+    }
+
+    .account-form .cta {
+      background: var(--primary-color, #d4af37);
+      color: #fff;
+      border: none;
+      padding: 10px;
+      margin-top: 15px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: transform 0.3s, background 0.3s;
+    }
+
+    .account-form .cta:hover {
+      background: var(--accent-color, #b8922b);
+      transform: scale(1.02);
+    }
+
+    .terms {
+      margin: 15px 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="account-creation-container">
+    <h1>Create Your JAL Account</h1>
+    
+    <!-- Tab Navigation for Account Types -->
+    <div class="account-type-tabs">
+      <button id="tab-creator" class="tab-button active">Creator</button>
+      <button id="tab-observer" class="tab-button">Observer</button>
+      <button id="tab-investor" class="tab-button">Investor</button>
+    </div>
+    
+    <!-- Creator Account Form -->
+    <div id="form-creator" class="account-form active">
+      <form id="creator-form">
+        <!-- Hidden field for account type -->
+        <input type="hidden" name="accountType" value="Creator">
+        
+        <label for="creator-displayname">Display Name:</label>
+        <input type="text" id="creator-displayname" name="displayName" placeholder="Enter a display name" required>
+        
+        <label for="creator-wallet">Wallet Address:</label>
+        <input type="text" id="creator-wallet" name="walletAddress" readonly value="0xABC...123">
+        
+        <label for="creator-profilepic">Profile Picture (Optional):</label>
+        <input type="file" id="creator-profilepic" name="profilePic" accept="image/*">
+        
+        <label for="creator-bio">Bio:</label>
+        <textarea id="creator-bio" name="bio" placeholder="Tell us about yourself"></textarea>
+        
+        <label for="creator-social-twitter">Twitter (Optional):</label>
+        <input type="text" id="creator-social-twitter" name="twitter" placeholder="Twitter URL">
+        
+        <label for="creator-email">Email (Optional):</label>
+        <input type="email" id="creator-email" name="email" placeholder="Your email address">
+        
+        <div class="terms">
+          <label>
+            <input type="checkbox" name="terms" required>
+            I agree to the Terms and Conditions and Privacy Policy.
+          </label>
+        </div>
+        
+        <button type="submit" class="cta">Create Creator Account</button>
+      </form>
+    </div>
+    
+    <!-- Observer Account Form -->
+    <div id="form-observer" class="account-form">
+      <form id="observer-form">
+        <input type="hidden" name="accountType" value="Observer">
+        
+        <label for="observer-displayname">Display Name:</label>
+        <input type="text" id="observer-displayname" name="displayName" placeholder="Enter a display name" required>
+        
+        <label for="observer-wallet">Wallet Address:</label>
+        <input type="text" id="observer-wallet" name="walletAddress" readonly value="0xABC...123">
+        
+        <label for="observer-profilepic">Profile Picture (Optional):</label>
+        <input type="file" id="observer-profilepic" name="profilePic" accept="image/*">
+        
+        <label for="observer-bio">Bio:</label>
+        <textarea id="observer-bio" name="bio" placeholder="Tell us about yourself"></textarea>
+        
+        <label for="observer-social-twitter">Twitter (Optional):</label>
+        <input type="text" id="observer-social-twitter" name="twitter" placeholder="Twitter URL">
+        
+        <label for="observer-email">Email (Optional):</label>
+        <input type="email" id="observer-email" name="email" placeholder="Your email address">
+        
+        <div class="terms">
+          <label>
+            <input type="checkbox" name="terms" required>
+            I agree to the Terms and Conditions and Privacy Policy.
+          </label>
+        </div>
+        
+        <button type="submit" class="cta">Create Observer Account</button>
+      </form>
+    </div>
+    
+    <!-- Investor Account Form -->
+    <div id="form-investor" class="account-form">
+      <form id="investor-form">
+        <input type="hidden" name="accountType" value="Investor">
+        
+        <label for="investor-displayname">Display Name:</label>
+        <input type="text" id="investor-displayname" name="displayName" placeholder="Enter a display name" required>
+        
+        <label for="investor-wallet">Wallet Address:</label>
+        <input type="text" id="investor-wallet" name="walletAddress" readonly value="0xABC...123">
+        
+        <label for="investor-profilepic">Profile Picture (Optional):</label>
+        <input type="file" id="investor-profilepic" name="profilePic" accept="image/*">
+        
+        <label for="investor-bio">Bio:</label>
+        <textarea id="investor-bio" name="bio" placeholder="Tell us about yourself"></textarea>
+        
+        <label for="investor-social-twitter">Twitter (Optional):</label>
+        <input type="text" id="investor-social-twitter" name="twitter" placeholder="Twitter URL">
+        
+        <label for="investor-email">Email (Optional):</label>
+        <input type="email" id="investor-email" name="email" placeholder="Your email address">
+        
+        <div class="terms">
+          <label>
+            <input type="checkbox" name="terms" required>
+            I agree to the Terms and Conditions and Privacy Policy.
+          </label>
+        </div>
+        
+        <button type="submit" class="cta">Create Investor Account</button>
+      </form>
+    </div>
+    
+  </div>
+
+  <script>
+    // Simple tab switching logic for account forms
+    document.addEventListener('DOMContentLoaded', function(){
+      const tabs = document.querySelectorAll('.tab-button');
+      const forms = document.querySelectorAll('.account-form');
+      
+      tabs.forEach(tab => {
+        tab.addEventListener('click', function(){
+          tabs.forEach(btn => btn.classList.remove('active'));
+          forms.forEach(form => form.classList.remove('active'));
+          
+          tab.classList.add('active');
+          const target = tab.id.replace('tab-', 'form-');
+          document.getElementById(target).classList.add('active');
+        });
+      });
+      
+      // Example form submission handling (prevent default)
+      const formElements = document.querySelectorAll('form');
+      formElements.forEach(form => {
+        form.addEventListener('submit', function(e){
+          e.preventDefault();
+          const accountType = form.accountType.value;
+          alert("Account created for " + accountType + "!");
+          // Insert account creation logic here
+        });
+      });
+    });
+  </script>
+</body>
+</html>

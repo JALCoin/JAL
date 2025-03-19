@@ -1,0 +1,60 @@
+pubkey: 3R2X8VDPwLDTMXdBLemXTmduRnKyFg6Go8hJHBayPUY2
+
+Devnet:
+Address:  2L8BkYgZSZ5EMB1nmJZ9U1wdLzx9ofLxTqEPVV4kQiNo
+Decimals:  9
+
+Signature: 29nSGajSCyeLJwNpr3ZvCLkr3wr3G83ZvxfnCWz6q1JjyNuYHNmc7uANoWZprNZMVDcBvdLyt5iE6aMyDA6zCbCQ
+
+create-account 2L8BkYgZSZ5EMB1nmJZ9U1wdLzx9ofLxTqEPVV4kQiNo
+Creating account Fmm4QeH8G1EHzZQNZj9cWnP2Z6JNVeBYghtvmBbxRCV2
+
+Signature: 3jSmQdNiC3PWtfkbghY9fgqYZrRWVa1ccvwfhRpbaJtJBrHbXDZb5wNNfjkpy2e3RTsWocGoLfKscXyzDBTDU3gz
+
+Minting 1000000000 tokens
+  Token: 2L8BkYgZSZ5EMB1nmJZ9U1wdLzx9ofLxTqEPVV4kQiNo
+  Recipient: Fmm4QeH8G1EHzZQNZj9cWnP2Z6JNVeBYghtvmBbxRCV2
+
+Signature: 3gUqhRVYPPYrFdz59TDZZwjSrj5E4D1bwjTWjc5FgpCTgjSd4YujKRwWiPBrPthS3Y7nZaAeGN2rDg3693K3j5Ji
+
+jal@DESKTOP-28FB9S8:~$ spl-token accounts
+Token                                         Balance
+--------------------------------------------------------
+2L8BkYgZSZ5EMB1nmJZ9U1wdLzx9ofLxTqEPVV4kQiNo  1000000000
+
+Config File: /home/jal/.config/solana/cli/config.yml
+RPC URL: https://api.mainnet-beta.solana.com
+WebSocket URL: wss://api.mainnet-beta.solana.com/ (computed)
+Keypair Path: /home/jal/.config/solana/id.json
+
+Mainnet:
+
+3R2X8VDPwLDTMXdBLemXTmduRnKyFg6Go8hJHBayPUY2
+jal@DESKTOP-28FB9S8:~$ solana balance
+0.25 SOL
+jal@DESKTOP-28FB9S8:~$ spl-token create-token
+Creating token 9TCwNEKKPPgZBQ3CopjdhW9j8fZNt8SH7waZJTFRgx7v under program TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA
+
+Address:  9TCwNEKKPPgZBQ3CopjdhW9j8fZNt8SH7waZJTFRgx7v
+Decimals:  9
+
+Signature: 49iERZpzYYUmSMt8bqdki3MpEmBDMjjQ58feeFspQBPAU76DVfWrna8PV1hiRNgZV7hptVQ8HHeyYin6ep3MepNd
+
+jal@DESKTOP-28FB9S8:~$ spl-token create-account 9TCwNEKKPPgZBQ3CopjdhW9j8fZNt8SH7waZJTFRgx7v
+Creating account 3WfECZgu1tAeaHV3DooaPnR6jdTPzDGaoaP8TBMhmFVV
+
+Signature: 4v3SSGLrez2ecwhqD3rYew8PzNtcv1M2hyD1T8qkyC7TVHSyvHzzHnhBVUX9dYSHgJvdzGHbjoG7DRzCeeAVRMBF
+
+jal@DESKTOP-28FB9S8:~$ spl-token mint 9TCwNEKKPPgZBQ3CopjdhW9j8fZNt8SH7waZJTFRgx7v 1000000000
+Minting 1000000000 tokens
+  Token: 9TCwNEKKPPgZBQ3CopjdhW9j8fZNt8SH7waZJTFRgx7v
+  Recipient: 3WfECZgu1tAeaHV3DooaPnR6jdTPzDGaoaP8TBMhmFVV
+
+Signature: 2EePDRotW9v56uNKcjQnCMz3iyUUVggjpfiNvjDoEKqj9meaZ629BCrywL4nkz328WqRRgZFsURxETspzL9gjbgn
+
+jal@DESKTOP-28FB9S8:~$ spl-token accounts
+Token                                         Balance
+--------------------------------------------------------
+9TCwNEKKPPgZBQ3CopjdhW9j8fZNt8SH7waZJTFRgx7v  1000000000
+
+jal@DESKTOP-28FB9S8:~$

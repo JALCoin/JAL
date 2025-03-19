@@ -1,0 +1,246 @@
+/* ==========================================================================
+   Dashboard Base Styles
+   ========================================================================== */
+body {
+  margin: 0;
+  font-family: 'Cinzel', serif, 'Roboto', sans-serif;
+  background: #f4f4f4;
+  color: #333;
+}
+
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* ==========================================================================
+   Dashboard Wrapper (Grid Layout for header, main, and footer)
+   ========================================================================== */
+#dashboard-wrapper {
+  display: grid;
+  grid-template-areas: 
+    "header header"
+    "main main"
+    "footer footer";
+  grid-template-rows: auto 1fr auto;
+  min-height: 100vh;
+  position: relative;
+}
+
+/* ==========================================================================
+   Dashboard Header
+   ========================================================================== */
+.dashboard-header {
+  grid-area: header;
+  background: #d4af37;
+  color: #fff;
+  padding: 20px 0;
+}
+
+/* ==========================================================================
+   Dashboard Header Navigation (Updated)
+   ========================================================================== */
+.header-container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header-left {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.header-left .dashboard-logo {
+  max-height: 50px;
+  width: auto;
+  margin-bottom: 5px;
+}
+
+.header-left .page-title {
+  font-size: 1.5rem;
+  margin: 0;
+}
+
+.main-nav ul {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+  margin: 0;
+  padding: 0;
+}
+
+.main-nav li a {
+  text-decoration: none;
+  font-size: 1.2rem;
+  color: #fff;
+  transition: text-shadow 0.3s ease, transform 0.3s ease;
+}
+
+/* Glow & Pulse on Hover/Active */
+@keyframes pulseGlow {
+  0% {
+    text-shadow: 0 0 10px #d4af37;
+  }
+  50% {
+    text-shadow: 0 0 20px #d4af37, 0 0 30px #d4af37;
+  }
+  100% {
+    text-shadow: 0 0 10px #d4af37;
+  }
+}
+
+.main-nav li a:hover,
+.main-nav li a.active {
+  animation: pulseGlow 1.5s infinite;
+  transform: scale(1.05);
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+/* ==========================================================================
+   Dashboard Sidebar (Fixed & Toggable) - Updated for Right Side
+   ========================================================================== */
+:root {
+  --sidebar-width: 250px;
+}
+
+#dashboard-sidebar .hamburger-btn {
+   position: absolute;
+  top: 10px;
+  left: -90px; /* Adjust this value as needed */
+  z-index: 210; /* Ensures the button stays above the sidebar border */
+}
+
+#dashboard-sidebar {
+  background: #fff;
+  padding: 20px;
+  border-left: 1px solid #ccc; /* Use left border since sidebar is on the right */
+  width: var(--sidebar-width);
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  transition: transform 0.3s ease !important;
+  z-index: 100;
+  transform: translateX(100%); /* Initially hidden off the right side */
+}
+
+#dashboard-sidebar.open {
+  transform: translateX(0) !important; /* Slide in from right */
+}
+
+/* Sidebar navigation styling */
+.dashboard-sidebar nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.dashboard-sidebar nav ul li {
+  margin-bottom: 10px;
+}
+
+.dashboard-sidebar nav ul li a {
+  text-decoration: none;
+  color: #333;
+  padding: 8px 12px;
+  display: block;
+  border-radius: 4px;
+  transition: background 0.3s;
+}
+
+.dashboard-sidebar nav ul li a:hover,
+.dashboard-sidebar nav ul li a.active {
+  background: #d4af37;
+  color: #fff;
+}
+
+/* ==========================================================================
+   Hamburger Button Styles
+   ========================================================================== */
+.hamburger-btn {
+  background: none;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+  color: #000;
+  margin-right: 1rem;
+  z-index: 200;
+  transition: transform 0.3s ease;
+}
+
+/* For small screens, shift by sidebar width */
+@media (max-width: 768px) {
+  .hamburger-btn.shifted {
+    transform: translateX(var(--sidebar-width));
+  }
+}
+
+/* For larger screens, use a smaller shift value */
+@media (min-width: 769px) {
+  .hamburger-btn.shifted {
+    transform: translateX(50px);
+  }
+}
+
+/* ==========================================================================
+   Dashboard Main Content
+   ========================================================================== */
+.dashboard-main {
+  grid-area: main;
+  background: #fff;
+  padding: 20px;
+  margin-left: var(--sidebar-width);
+  margin-right: var(--sidebar-width); /* Ensure content doesn't run under right sidebar */
+}
+
+.dashboard-main h2 {
+  margin-top: 0;
+}
+
+.dashboard-widget {
+  background: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 15px;
+  margin-bottom: 20px;
+}
+
+/* ==========================================================================
+   Dashboard Footer
+   ========================================================================== */
+.dashboard-footer {
+  grid-area: footer;
+  background: #f9f9f9;
+  text-align: center;
+  padding: 10px 0;
+  border-top: 1px solid #ccc;
+}
+
+/* ==========================================================================
+   Responsive Adjustments
+   ========================================================================== */
+/* For small screens, remove main content left/right margins */
+@media (max-width: 768px) {
+  .dashboard-main {
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
+/* ==========================================================================
+   Conditional Display for Dashboard-Specific Elements
+   ========================================================================== */
+body:not(.dashboard) #dashboard-sidebar,
+body:not(.dashboard) .hamburger-btn {
+  display: none;
+}

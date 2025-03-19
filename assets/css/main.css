@@ -1,0 +1,23 @@
+/* main.css - Global Styles and CSS Variables */
+:root {
+  --primary-color: #f5d76e;       /* Gold */
+  --secondary-color: #2575fc;     /* Glowing Blue */
+  --accent-color: #50c878;        /* Emerald Green */
+  --background-light: #ffffff;
+  --background-dark: #121212;
+  --text-light: #333;
+  --text-dark: #e0e0e0;
+  --glow-color: rgba(37, 117, 252, 0.8);
+}
+
+body {
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}

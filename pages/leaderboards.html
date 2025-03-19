@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Leader Boards - JAL/SOL</title>
+  <link rel="stylesheet" href="../assets/css/main.css">
+  <link rel="stylesheet" href="../assets/css/dashboard.css">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Montserrat:wght@300;400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+  <style>
+    .slide-out {
+      animation: slideOutAnimation 0.3s forwards;
+    }
+    @keyframes slideOutAnimation {
+      from { transform: translateX(0); opacity: 1; }
+      to { transform: translateX(-100%); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+  <div id="dashboard-wrapper">
+    <header class="dashboard-header">
+      <div class="container header-container">
+        <div class="header-left">
+          <img src="../assets/images/logo.png" alt="JAL Logo" class="dashboard-logo">
+        </div>
+        <nav class="main-nav">
+          <ul>
+            <li><a href="dashboard.html" class="nav-link">Dashboard</a></li>
+            <li><a href="scrolls.html" class="nav-link">Scrolls</a></li>
+            <li><a href="live.html" class="nav-link">Live</a></li>
+            <li><a href="leaderboards.html" class="nav-link active">Leader Boards</a></li>
+            <li><a href="explore.html" class="nav-link">Explore</a></li>
+          </ul>
+        </nav>
+        <div class="header-right"></div>
+      </div>
+    </header>
+
+    <main class="dashboard-main">
+      <div class="container">
+        <h2>Leader Boards</h2>
+        <p>This is the Leader Boards page where top creators, observers, and investors are ranked based on various performance metrics.</p>
+        <!-- Additional Leader Boards content goes here -->
+      </div>
+    </main>
+
+    <footer class="dashboard-footer">
+      <div class="container">
+        <p>&copy; 2025 JAL Webapp. All rights reserved.</p>
+      </div>
+    </footer>
+  </div>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      let touchstartX = 0;
+      let touchendX = 0;
+      const minSwipeDistance = 50;
+      
+      document.addEventListener('touchstart', e => { touchstartX = e.changedTouches[0].screenX; }, false);
+      document.addEventListener('touchend', e => {
+        touchendX = e.changedTouches[0].screenX;
+        handleGesture();
+      }, false);
+      
+      function handleGesture() {
+        const navLinks = document.querySelectorAll('.main-nav li a');
+        let activeIndex = Array.from(navLinks).findIndex(link => link.classList.contains('active'));
+      
+        if (touchendX < touchstartX - minSwipeDistance && activeIndex < navLinks.length - 1) {
+          activeIndex++;
+          navigateTo(navLinks[activeIndex]);
+        }
+        if (touchendX > touchstartX + minSwipeDistance && activeIndex > 0) {
+          activeIndex--;
+          navigateTo(navLinks[activeIndex]);
+        }
+      }
+      
+      function navigateTo(link) {
+        document.querySelectorAll('.main-nav li a').forEach(l => l.classList.remove('active'));
+        link.classList.add('active');
+        document.body.classList.add('slide-out');
+        setTimeout(() => { window.location.href = link.href; }, 300);
+      }
+    });
+  </script>
+</body>
+</html>

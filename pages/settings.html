@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Settings - JAL/SOL Dashboard</title>
+  <link rel="stylesheet" href="../assets/css/dashboard.css">
+  <link rel="stylesheet" href="../assets/css/main.css">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Montserrat:wght@300;400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<body class="dashboard">
+  <div id="dashboard-wrapper">
+    <!-- Header Section -->
+    <header class="dashboard-header">
+      <div class="container header-container">
+        <div class="header-left">
+          <img src="../assets/images/logo.png" alt="JAL Logo" class="dashboard-logo">
+        </div>
+        <nav class="main-nav">
+          <ul>
+            <li><a href="dashboard.html" class="nav-link">Dashboard</a></li>
+            <li><a href="scrolls.html" class="nav-link">Scrolls</a></li>
+            <li><a href="live.html" class="nav-link">Live</a></li>
+            <li><a href="leaderboards.html" class="nav-link">Leader Boards</a></li>
+            <li><a href="explore.html" class="nav-link">Explore</a></li>
+          </ul>
+        </nav>
+        <div class="header-right"></div>
+      </div>
+    </header>
+
+    <!-- Sidebar Section -->
+    <aside class="dashboard-sidebar" id="dashboard-sidebar">
+      <nav>
+        <ul>
+          <li><a href="overview.html" class="nav-link">Overview</a></li>
+          <li><a href="profile.html" class="nav-link">Profile</a></li>
+          <li><a href="transactions.html" class="nav-link">Transactions</a></li>
+          <li><a href="settings.html" class="nav-link active">Settings</a></li>
+          <li><a href="support.html" class="nav-link">Support</a></li>
+        </ul>
+      </nav>
+      <div class="sidebar-actions" style="margin-top: 20px; display: flex; flex-direction: column; gap: 10px;">
+        <button id="connect-wallet-btn" class="cta">Connect Wallet</button>
+        <button id="logout-btn" class="cta">Logout</button>
+      </div>
+    </aside>
+
+    <!-- Main Content Section -->
+    <main class="dashboard-main">
+      <div class="container">
+        <h2>Settings</h2>
+        <p>This is the Settings page. Manage your account settings, change your password, and adjust your preferences.</p>
+        <!-- Additional Settings content goes here -->
+      </div>
+    </main>
+
+    <!-- Footer Section -->
+    <footer class="dashboard-footer">
+      <div class="container">
+        <p>&copy; 2025 JAL Webapp. All rights reserved.</p>
+      </div>
+    </footer>
+  </div>
+  <script src="https://unpkg.com/@solana/web3.js@1.73.0/lib/index.iife.js"></script>
+  <script src="https://unpkg.com/@solana/spl-token@0.2.0/lib/index.iife.js"></script>
+  <script>
+    // (Insert common JS code here)
+  </script>
+</body>
+</html>

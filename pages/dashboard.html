@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard - JAL/SOL</title>
+  <link rel="stylesheet" href="../assets/css/dashboard.css">
+  <link rel="stylesheet" href="../assets/css/main.css">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Montserrat:wght@300;400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+  <!-- Chart.js for interactive charts -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    /* Inline CSS for demonstration purposes */
+    /* Header Navigation Styles */
+    .header-container {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .header-left {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .header-left .dashboard-logo {
+      max-height: 100px; /* Increased logo size */
+      width: auto;
+      margin-bottom: 5px;
+    }
+    .main-nav ul {
+      list-style: none;
+      display: flex;
+      gap: 30px;
+      margin: 0;
+      padding: 0;
+    }
+    .main-nav li a {
+      text-decoration: none;
+      font-size: 1.2rem;
+      color: #fff;
+      transition: text-shadow 0.3s ease, transform 0.3s ease;
+    }
+    @keyframes pulseGlow {
+      0% { text-shadow: 0 0 10px #d4af37; }
+      50% { text-shadow: 0 0 20px #d4af37, 0 0 30px #d4af37; }
+      100% { text-shadow: 0 0 10px #d4af37; }
+    }
+    .main-nav li a:hover,
+    .main-nav li a.active {
+      animation: pulseGlow 1.5s infinite;
+      transform: scale(1.05);
+    }
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+  </style>
+</head>
+<body class="dashboard">
+  <div id="dashboard-wrapper">
+    <header class="dashboard-header">
+      <div class="container header-container">
+        <!-- Left Section: Logo only -->
+        <div class="header-left">
+          <img src="../assets/images/logo.png" alt="JAL Logo" class="dashboard-logo">
+        </div>
+        <!-- Center Section: Main Navigation -->
+        <nav class="main-nav">
+          <ul>
+            <li><a href="dashboard.html" class="nav-link active">Dashboard</a></li>
+            <li><a href="scrolls.html" class="nav-link">Scrolls</a></li>
+            <li><a href="live.html" class="nav-link">Live</a></li>
+            <li><a href="leaderboards.html" class="nav-link">Leader Boards</a></li>
+            <li><a href="explore.html" class="nav-link">Explore</a></li>
+          </ul>
+        </nav>
+        <!-- Right Section: (Empty for non-dashboard pages) -->
+        <div class="header-right">
+          <!-- No hamburger here anymore -->
+        </div>
+      </div>
+    </header>
+
+    <!-- Sidebar on the RIGHT with attached hamburger button -->
+    <aside class="dashboard-sidebar" id="dashboard-sidebar">
+      <!-- Hamburger Button attached to the top-left of the sidebar -->
+      <button id="hamburger-btn" class="hamburger-btn" aria-label="Toggle Sidebar">&#9776;</button>
+      <nav>
+        <ul>
+          <li><a href="overview.html" class="sidebar-link nav-link active">Overview</a></li>
+          <li><a href="profile.html" class="sidebar-link nav-link">Profile</a></li>
+          <li><a href="transactions.html" class="sidebar-link nav-link">Transactions</a></li>
+          <li><a href="settings.html" class="sidebar-link nav-link">Settings</a></li>
+          <li><a href="support.html" class="sidebar-link nav-link">Support</a></li>
+        </ul>
+      </nav>
+      <div class="sidebar-actions" style="margin-top: 20px; display: flex; flex-direction: column; gap: 10px;">
+        <button id="connect-wallet-btn" class="cta">Connect Wallet</button>
+        <button id="logout-btn" class="cta">Logout</button>
+      </div>
+    </aside>
+
+    <!-- Main Content Section (Dynamic content loaded here) -->
+    <main class="dashboard-main">
+      <div class="container" id="main-content">
+        <!-- Default content (Dashboard overview) -->
+        <h2>Welcome, <span id="user-name">User Name</span></h2>
+        <p>Your dashboard is now fully active. Here you can view your balances, manage your account, track transactions, and access additional features.</p>
+        <section class="dashboard-widget">
+          <h3>SOL Balance</h3>
+          <p id="sol-balance">Loading SOL balance...</p>
+        </section>
+        <section class="dashboard-widget">
+          <h3>JAL Balance</h3>
+          <p id="jal-balance">Loading JAL balance...</p>
+        </section>
+        <section class="dashboard-widget" id="creator-minted-widget" style="display: none;">
+          <h3>Minted Tokens Available</h3>
+          <p id="minted-balance">Loading minted tokens...</p>
+        </section>
+        <section class="dashboard-widget">
+          <h3>Recent Transactions</h3>
+          <p id="recent-transactions">No recent transactions.</p>
+        </section>
+        <section class="dashboard-widget">
+          <h3>Transaction Trends</h3>
+          <div class="chart-container">
+            <canvas id="transactionsChart"></canvas>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <footer class="dashboard-footer">
+      <div class="container">
+        <p>&copy; 2025 JAL Webapp. All rights reserved.</p>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Include Solana Web3.js and SPL Token libraries (if needed) -->
+  <script src="https://unpkg.com/@solana/web3.js@1.73.0/lib/index.iife.js"></script>
+  <script src="https://unpkg.com/@solana/spl-token@0.2.0/lib/index.iife.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', async function() {
+      // Authentication Check
+      if (sessionStorage.getItem('userAuthenticated') !== 'true') {
+        window.location.href = '../index.html';
+        return;
+      } else {
+        console.log('Dashboard loaded for authenticated user.');
+      }
+      
+      // Populate static dashboard fields from sessionStorage
+      const storedUserName = sessionStorage.getItem('userDisplayName') || "User Name";
+      document.getElementById('user-name').textContent = storedUserName;
+      
+      // (Token and wallet integration code would go here if needed)
+      
+      // Populate additional dashboard fields (fallback/defaults)
+      const tokenBalanceDefault = sessionStorage.getItem('tokenBalance') || "0.00 JAL";
+      const recentTransactions = sessionStorage.getItem('recentTransactions') || "No recent transactions.";
+      document.getElementById('jal-balance').textContent = tokenBalanceDefault;
+      document.getElementById('recent-transactions').textContent = recentTransactions;
+      
+      // Logout functionality (in sidebar)
+      var logoutBtn = document.getElementById('logout-btn');
+      if (logoutBtn) {
+        logoutBtn.addEventListener('click', function() {
+          sessionStorage.clear();
+          window.location.href = '../index.html';
+        });
+      }
+      
+      // Hamburger toggle for sidebar (Dashboard only)
+      const hamburgerBtn = document.getElementById('hamburger-btn');
+      const sidebar = document.getElementById('dashboard-sidebar');
+      if (hamburgerBtn && sidebar) {
+        hamburgerBtn.addEventListener('click', function() {
+          sidebar.classList.toggle('open');
+          hamburgerBtn.classList.toggle('shifted');
+          console.log("Sidebar toggle:", sidebar.classList.contains('open') ? "Opened" : "Closed");
+        });
+      } else {
+        console.warn("Hamburger button or sidebar not found.");
+      }
+      
+      // Mobile gesture navigation for top nav (if needed)
+      let touchstartX = 0;
+      let touchendX = 0;
+      const minSwipeDistance = 50;
+      
+      document.addEventListener('touchstart', function(e) {
+        touchstartX = e.changedTouches[0].screenX;
+      }, false);
+      
+      document.addEventListener('touchend', function(e) {
+        touchendX = e.changedTouches[0].screenX;
+        handleNavGesture();
+      }, false);
+      
+      function handleNavGesture() {
+        const navLinks = document.querySelectorAll('.main-nav li a');
+        let activeIndex = Array.from(navLinks).findIndex(link => link.classList.contains('active'));
+      
+        if (touchendX < touchstartX - minSwipeDistance) {
+          if (activeIndex < navLinks.length - 1) {
+            activeIndex++;
+            navigateTo(navLinks[activeIndex]);
+          }
+        }
+        if (touchendX > touchstartX + minSwipeDistance) {
+          if (activeIndex > 0) {
+            activeIndex--;
+            navigateTo(navLinks[activeIndex]);
+          }
+        }
+      }
+      
+      function navigateTo(link) {
+        document.querySelectorAll('.main-nav li a').forEach(l => l.classList.remove('active'));
+        link.classList.add('active');
+        document.body.classList.add('slide-out');
+        setTimeout(() => {
+          window.location.href = link.href;
+        }, 300);
+      }
+      
+      // AJAX Sidebar Navigation: Load sidebar page content dynamically
+      function loadPage(url) {
+        fetch(url)
+          .then(response => response.text())
+          .then(data => {
+            let tempDiv = document.createElement('div');
+            tempDiv.innerHTML = data;
+            // If the fetched page includes a container with id="page-content", use only its inner HTML.
+            let newContent = tempDiv.querySelector('#page-content');
+            if (newContent) {
+              document.getElementById('main-content').innerHTML = newContent.innerHTML;
+            } else {
+              // Otherwise, remove any <header> and <footer> elements from the fetched content.
+              tempDiv.querySelectorAll('header, footer').forEach(el => el.remove());
+              document.getElementById('main-content').innerHTML = tempDiv.innerHTML;
+            }
+          })
+          .catch(error => console.error('Error loading page:', error));
+      }
+      
+      // Attach click event to sidebar links (with class "sidebar-link")
+      document.querySelectorAll('.dashboard-sidebar nav ul li a.sidebar-link').forEach(link => {
+        link.addEventListener('click', function(e) {
+          e.preventDefault();
+          // Update active state in sidebar
+          document.querySelectorAll('.dashboard-sidebar nav ul li a.sidebar-link').forEach(l => l.classList.remove('active'));
+          this.classList.add('active');
+          // Load page content via AJAX
+          loadPage(this.getAttribute('href'));
+          // Update browser history
+          history.pushState(null, '', this.getAttribute('href'));
+        });
+      });
+      
+      // Handle browser back/forward navigation
+      window.addEventListener('popstate', function() {
+        loadPage(location.pathname);
+      });
+      
+    });
+  </script>
+</body>
+</html>

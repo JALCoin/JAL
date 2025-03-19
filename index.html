@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="JAL/SOL - Gateway to Creative Evolution. A platform where ancient numeracy meets modern blockchain innovation to empower creative wealth.">
+  <title>JAL/SOL - Gateway to Creative Evolution</title>
+  <!-- Global Styles -->
+  <link rel="stylesheet" href="assets/css/main.css">
+  <!-- Landing Page Styles -->
+  <link rel="stylesheet" href="assets/css/landing.css">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Montserrat:wght@300;400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Landing Overlay with Golden Border -->
+  <div id="landing-overlay" role="dialog" aria-modal="true">
+    <!-- Video Background -->
+    <video id="hero-video" class="hero-video" autoplay muted loop>
+      <source src="assets/videos/hero.mp4" type="video/mp4">
+      <img src="assets/images/hero-fallback.jpg" alt="Background Visual">
+    </video>
+    <!-- Landing Content -->
+    <div class="landing-content">
+      <!-- Landing Header with Logo -->
+      <header class="landing-header">
+        <div class="container">
+          <a href="index.html" class="logo-link" aria-label="Home">
+            <img id="logo" src="assets/images/logo.png" alt="JAL Logo">
+          </a>
+        </div>
+      </header>
+      <!-- Hero Text Section -->
+      <section class="hero-text" aria-labelledby="hero-title">
+        <div class="hero-text-container">
+          <h1 id="hero-title">Unlock Your Creative Wealth</h1>
+          <p>
+            Behold the gateway—a portal where the wisdom of ancient numeracal sequence meets dynamic blockchain innovation. Here, every number in the timeless sequence 1, 1, 2, 3, 5, 8 symbolizes endless potential and transformation.
+          </p>
+        </div>
+      </section>
+      <!-- Information Sections -->
+      <section class="info-section" aria-labelledby="about-title">
+        <h2 id="about-title">About the Platform</h2>
+        <p>
+          JAL is a continuously evolving ecosystem that fuses modern crypto technology with timeless human values. Whether you’re an investor, creator, or an observer, our platform empowers you to invest, grow, and co-create a future of sustainable wealth.
+        </p>
+      </section>
+      <section class="info-section" aria-labelledby="how-title">
+        <h2 id="how-title">How It Works</h2>
+        <p>
+          Convert SOL to JAL seamlessly with our smart contract-driven swap mechanism. Connect your crypto wallet, register as an Investor, Creator, or Observer, and engage with a community dedicated to mutual growth and creative prosperity.
+        </p>
+      </section>
+      <section class="info-section" aria-labelledby="vision-title">
+        <h2 id="vision-title">Our Vision</h2>
+        <p>
+          Inspired by the Golden Ratio, our vision celebrates the balance between hope, will, faith, reaction, evaluation, and adaptation. It is a promise of continuous evolution—a contract for a brighter, creatively enriched future.
+        </p>
+      </section>
+      <!-- Roadmap Section -->
+      <section class="roadmap-section" aria-labelledby="roadmap-title">
+        <h2 id="roadmap-title">Our Roadmap to Creative Evolution</h2>
+        <ol>
+          <li><strong>Concept & Vision:</strong> Fusing ancient numeracy with modern blockchain to empower creators and observers.</li>
+          <li><strong>Platform Architecture & Development:</strong> Building a robust foundation with smart contracts and a seamless SOL-to-JAL conversion.</li>
+          <li><strong>Beta Launch & Early Adopter Onboarding:</strong> Refining our platform with feedback from early users.</li>
+          <li><strong>Official Launch & Community Building:</strong> Growing our community with partnerships and educational resources.</li>
+          <li><strong>Continuous Innovation & Feature Expansion:</strong> Introducing new tools and features to meet evolving needs.</li>
+          <li><strong>Global Outreach & Ecosystem Integration:</strong> Connecting with global networks to build a vibrant creative ecosystem.</li>
+        </ol>
+      </section>
+      <!-- Call-to-Action (CTA) Section -->
+      <section class="contract-footer">
+        <p>
+          Instead of signing a static contract, embrace this living promise. Connect your crypto wallet, register your account, and swap SOL for JAL to step into a realm of boundless creative opportunity.
+        </p>
+        <button id="enter-dashboard" class="cta" aria-label="Enter Dashboard">Enter Dashboard</button>
+      </section>
+    </div>
+  </div>
+
+  <!-- Authentication Modal (Login/Signup Options) -->
+  <div id="auth-modal" class="modal">
+    <div class="modal-content">
+      <span class="close-modal" id="close-auth">&times;</span>
+      <h1>Welcome to JAL/SOL</h1>
+      <p>Please choose an option to continue:</p>
+      <div class="auth-buttons">
+        <button id="auth-login-btn" class="cta">Login</button>
+        <button id="auth-signup-btn" class="cta">Sign Up</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Signup Modal (Account Creation Form) -->
+  <div id="signup-modal" class="modal">
+    <div class="modal-content">
+      <span class="close-modal" id="close-signup">&times;</span>
+      <div class="account-creation-container">
+        <!-- Logo at Top -->
+        <div class="signup-logo" style="text-align: center; margin-bottom: 20px;">
+          <img src="assets/images/logo.png" alt="JAL Logo" style="max-width: 150px;">
+        </div>
+        <h1>Create Your JAL Account</h1>
+        <!-- Horizontal Account Type Tabs -->
+        <div class="account-type-tabs">
+          <button id="tab-creator" class="tab-button active" data-target="form-creator">Creator</button>
+          <button id="tab-observer" class="tab-button" data-target="form-observer">Observer</button>
+          <button id="tab-investor" class="tab-button" data-target="form-investor">Investor</button>
+        </div>
+        <!-- Account Form Container (Only one form appears at a time) -->
+        <div class="account-form-container">
+          <!-- Creator Account Form -->
+          <div id="form-creator" class="account-form active">
+            <form id="creator-form">
+              <input type="hidden" name="accountType" value="Creator">
+              <label for="creator-displayname">Display Name:</label>
+              <input type="text" id="creator-displayname" name="displayName" placeholder="Enter a display name" required>
+
+              <label for="creator-username">Username:</label>
+              <input type="text" id="creator-username" name="username" placeholder="Choose a username" required>
+
+              <label for="creator-password">Password:</label>
+              <input type="password" id="creator-password" name="password" placeholder="Create a password" required>
+
+              <!-- Integrated Token Fields -->
+              <label for="token-name">Name:</label>
+              <input type="text" id="token-name" name="tokenName" placeholder="e.g., JAL Token" required>
+              <label for="token-symbol">Symbol:</label>
+              <input type="text" id="token-symbol" name="tokenSymbol" placeholder="e.g., JAL" required>
+              <label for="token-logo">Logo (Optional):</label>
+              <input type="file" id="token-logo" name="tokenLogo" accept="image/*">
+              <label for="creator-wallet">Wallet Address:</label>
+              <input type="text" id="creator-wallet" name="walletAddress" readonly value="0xABC...123">
+              <label for="creator-bio">Bio:</label>
+              <textarea id="creator-bio" name="bio" placeholder="Tell us about yourself"></textarea>
+              <!-- Social Links Grouped in a Compact Layout -->
+              <div class="social-links">
+                <div class="social-item">
+                  <label for="creator-x">
+                    <img src="assets/images/icons/x-icon.png" alt="X" title="X">
+                  </label>
+                  <input type="text" id="creator-x" name="x" placeholder="X URL">
+                </div>
+                <div class="social-item">
+                  <label for="creator-instagram">
+                    <img src="assets/images/icons/instagram-icon.png" alt="Instagram" title="Instagram">
+                  </label>
+                  <input type="text" id="creator-instagram" name="instagram" placeholder="Instagram URL">
+                </div>
+                <div class="social-item">
+                  <label for="creator-tiktok">
+                    <img src="assets/images/icons/tiktok-icon.png" alt="TikTok" title="TikTok">
+                  </label>
+                  <input type="text" id="creator-tiktok" name="tiktok" placeholder="TikTok URL">
+                </div>
+                <div class="social-item">
+                  <label for="creator-twitch">
+                    <img src="assets/images/icons/twitch-icon.png" alt="Twitch" title="Twitch">
+                  </label>
+                  <input type="text" id="creator-twitch" name="twitch" placeholder="Twitch URL">
+                </div>
+                <div class="social-item">
+                  <label for="creator-telegram">
+                    <img src="assets/images/icons/telegram-icon.png" alt="Telegram" title="Telegram">
+                  </label>
+                  <input type="text" id="creator-telegram" name="telegram" placeholder="Telegram URL">
+                </div>
+              </div>
+              <label for="creator-email">Email (Optional):</label>
+              <input type="email" id="creator-email" name="email" placeholder="Your email address">
+              <div class="terms">
+                <label>
+                  <input type="checkbox" name="terms" required>
+                  I agree to the <a href="#" id="show-terms">Terms and Conditions</a> and <a href="#" id="show-privacy">Privacy Policy</a>.
+                </label>
+              </div>
+              <button type="submit" class="cta">Create Creator Account</button>
+            </form>
+          </div>
+          
+          <!-- Observer Account Form -->
+          <div id="form-observer" class="account-form">
+            <form id="observer-form">
+              <input type="hidden" name="accountType" value="Observer">
+              <label for="observer-displayname">Display Name:</label>
+              <input type="text" id="observer-displayname" name="displayName" placeholder="Enter a display name" required>
+              
+              <label for="observer-username">Username:</label>
+              <input type="text" id="observer-username" name="username" placeholder="Choose a username" required>
+              
+              <label for="observer-password">Password:</label>
+              <input type="password" id="observer-password" name="password" placeholder="Create a password" required>
+
+              <label for="observer-wallet">Wallet Address:</label>
+              <input type="text" id="observer-wallet" name="walletAddress" readonly value="0xABC...123">
+              <label for="observer-profilepic">Profile Picture (Optional):</label>
+              <input type="file" id="observer-profilepic" name="profilePic" accept="image/*">
+              <label for="observer-bio">Bio:</label>
+              <textarea id="observer-bio" name="bio" placeholder="Tell us about yourself"></textarea>
+              <!-- Social Links for Observer -->
+              <div class="social-links">
+                <div class="social-item">
+                  <label for="observer-x">
+                    <img src="assets/images/icons/x-icon.png" alt="X" title="X">
+                  </label>
+                  <input type="text" id="observer-x" name="x" placeholder="X URL">
+                </div>
+                <div class="social-item">
+                  <label for="observer-instagram">
+                    <img src="assets/images/icons/instagram-icon.png" alt="Instagram" title="Instagram">
+                  </label>
+                  <input type="text" id="observer-instagram" name="instagram" placeholder="Instagram URL">
+                </div>
+                <div class="social-item">
+                  <label for="observer-tiktok">
+                    <img src="assets/images/icons/tiktok-icon.png" alt="TikTok" title="TikTok">
+                  </label>
+                  <input type="text" id="observer-tiktok" name="tiktok" placeholder="TikTok URL">
+                </div>
+                <div class="social-item">
+                  <label for="observer-twitch">
+                    <img src="assets/images/icons/twitch-icon.png" alt="Twitch" title="Twitch">
+                  </label>
+                  <input type="text" id="observer-twitch" name="twitch" placeholder="Twitch URL">
+                </div>
+                <div class="social-item">
+                  <label for="observer-telegram">
+                    <img src="assets/images/icons/telegram-icon.png" alt="Telegram" title="Telegram">
+                  </label>
+                  <input type="text" id="observer-telegram" name="telegram" placeholder="Telegram URL">
+                </div>
+              </div>
+              <label for="observer-email">Email (Optional):</label>
+              <input type="email" id="observer-email" name="email" placeholder="Your email address">
+              <div class="terms">
+                <label>
+                  <input type="checkbox" name="terms" required>
+                  I agree to the <a href="#" id="show-terms2">Terms and Conditions</a> and <a href="#" id="show-privacy2">Privacy Policy</a>.
+                </label>
+              </div>
+              <button type="submit" class="cta">Create Observer Account</button>
+            </form>
+          </div>
+          
+          <!-- Investor Account Form -->
+          <div id="form-investor" class="account-form">
+            <form id="investor-form">
+              <input type="hidden" name="accountType" value="Investor">
+              <label for="investor-displayname">Display Name:</label>
+              <input type="text" id="investor-displayname" name="displayName" placeholder="Enter a display name" required>
+              
+              <label for="investor-username">Username:</label>
+              <input type="text" id="investor-username" name="username" placeholder="Choose a username" required>
+              
+              <label for="investor-password">Password:</label>
+              <input type="password" id="investor-password" name="password" placeholder="Create a password" required>
+
+              <label for="investor-wallet">Wallet Address:</label>
+              <input type="text" id="investor-wallet" name="walletAddress" readonly value="0xABC...123">
+              <label for="investor-profilepic">Profile Picture (Optional):</label>
+              <input type="file" id="investor-profilepic" name="profilePic" accept="image/*">
+              <label for="investor-bio">Bio:</label>
+              <textarea id="investor-bio" name="bio" placeholder="Tell us about yourself"></textarea>
+              <!-- Social Links for Investor -->
+              <div class="social-links">
+                <div class="social-item">
+                  <label for="investor-x">
+                    <img src="assets/images/icons/x-icon.png" alt="X" title="X">
+                  </label>
+                  <input type="text" id="investor-x" name="x" placeholder="X URL">
+                </div>
+                <div class="social-item">
+                  <label for="investor-instagram">
+                    <img src="assets/images/icons/instagram-icon.png" alt="Instagram" title="Instagram">
+                  </label>
+                  <input type="text" id="investor-instagram" name="instagram" placeholder="Instagram URL">
+                </div>
+                <div class="social-item">
+                  <label for="investor-tiktok">
+                    <img src="assets/images/icons/tiktok-icon.png" alt="TikTok" title="TikTok">
+                  </label>
+                  <input type="text" id="investor-tiktok" name="tiktok" placeholder="TikTok URL">
+                </div>
+                <div class="social-item">
+                  <label for="investor-twitch">
+                    <img src="assets/images/icons/twitch-icon.png" alt="Twitch" title="Twitch">
+                  </label>
+                  <input type="text" id="investor-twitch" name="twitch" placeholder="Twitch URL">
+                </div>
+                <div class="social-item">
+                  <label for="investor-telegram">
+                    <img src="assets/images/icons/telegram-icon.png" alt="Telegram" title="Telegram">
+                  </label>
+                  <input type="text" id="investor-telegram" name="telegram" placeholder="Telegram URL">
+                </div>
+              </div>
+              <label for="investor-email">Email (Optional):</label>
+              <input type="email" id="investor-email" name="email" placeholder="Your email address">
+              <div class="terms">
+                <label>
+                  <input type="checkbox" name="terms" required>
+                  I agree to the <a href="#" id="show-terms3">Terms and Conditions</a> and <a href="#" id="show-privacy3">Privacy Policy</a>.
+                </label>
+              </div>
+              <button type="submit" class="cta">Create Investor Account</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Login Modal -->
+  <div id="login-modal" class="modal">
+    <div class="modal-content">
+      <span class="close-modal" id="close-login">&times;</span>
+      <h1>Login to JAL/SOL</h1>
+      <form id="login-form">
+        <label for="login-username">Username or Email:</label>
+        <input type="text" id="login-username" name="username" placeholder="Enter your username or email" required>
+        <label for="login-password">Password:</label>
+        <input type="password" id="login-password" name="password" placeholder="Enter your password" required>
+        <button type="submit" class="cta">Login</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Terms and Conditions Modal -->
+  <div id="terms-modal" class="modal policy-modal">
+    <div class="modal-content">
+      <span class="close-modal" id="close-terms">&times;</span>
+      <h2>Terms and Conditions</h2>
+      <p>
+        <strong>1. Introduction</strong><br>
+        Welcome to JAL/SOL. These Terms and Conditions govern your use of our Platform. By accessing or using the Platform, you agree to these terms.<br><br>
+        <strong>2. Use of the Platform</strong><br>
+        You must be at least 18 years old. You are responsible for the security of your wallet and account.<br><br>
+        <strong>3. Intellectual Property</strong><br>
+        All content on the Platform is owned by JAL/SOL or its licensors and may not be reproduced without permission.<br><br>
+        <strong>4. Disclaimer & Limitation of Liability</strong><br>
+        The Platform is provided “as is” and JAL/SOL is not liable for any damages arising from its use.<br><br>
+        <strong>5. Governing Law</strong><br>
+        These terms are governed by the laws of the jurisdiction in which JAL/SOL operates.
+      </p>
+    </div>
+  </div>
+
+  <!-- Privacy Policy Modal -->
+  <div id="privacy-modal" class="modal policy-modal">
+    <div class="modal-content">
+      <span class="close-modal" id="close-privacy">&times;</span>
+      <h2>Privacy Policy</h2>
+      <p>
+        <strong>1. Introduction</strong><br>
+        This Privacy Policy explains how JAL/SOL collects, uses, and protects your personal information.<br><br>
+        <strong>2. Information We Collect</strong><br>
+        We collect personal details (such as name, email, wallet address) and usage data.<br><br>
+        <strong>3. How We Use Your Information</strong><br>
+        Your data is used to provide and improve our services, authenticate your account, and for marketing purposes.<br><br>
+        <strong>4. Data Security</strong><br>
+        We implement various security measures to protect your data, though absolute security cannot be guaranteed.<br><br>
+        <strong>5. Your Rights</strong><br>
+        You may request access, correction, or deletion of your personal information by contacting us.
+      </p>
+    </div>
+  </div>
+
+  <!-- JavaScript -->
+  <script src="assets/js/template.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      console.log("DOM fully loaded.");
+      
+      // Set video volume
+      var heroVideo = document.getElementById('hero-video');
+      if (heroVideo) {
+        heroVideo.volume = 0.2;
+        console.log("Hero video volume set.");
+      }
+      
+      // Cache key elements
+      var landingOverlay = document.getElementById('landing-overlay');
+      var signupModal = document.getElementById('signup-modal');
+      var loginModal = document.getElementById('login-modal');
+      var authModal = document.getElementById('auth-modal');
+      var enterDashboardBtn = document.getElementById('enter-dashboard');
+      var authLoginBtn = document.getElementById('auth-login-btn');
+      var authSignupBtn = document.getElementById('auth-signup-btn');
+      var closeAuthBtn = document.getElementById('close-auth');
+      
+      if (!enterDashboardBtn) {
+        console.error("Enter Dashboard button not found!");
+      }
+      
+      // Transition from landing overlay to authentication modal on "Enter Dashboard" click
+      enterDashboardBtn.addEventListener('click', function() {
+        console.log("Enter Dashboard button clicked.");
+        // Fade out landing overlay
+        landingOverlay.style.transition = 'opacity 0.8s ease-out';
+        landingOverlay.style.opacity = 0;
+        setTimeout(function() {
+          landingOverlay.style.display = 'none';
+          console.log("Landing overlay hidden.");
+        }, 800);
+        
+        // Show the authentication modal
+        authModal.style.display = 'block';
+        console.log("Authentication modal displayed.");
+      });
+      
+      // Authentication modal: login button
+      if (authLoginBtn) {
+        authLoginBtn.addEventListener('click', function() {
+          authModal.style.display = 'none';
+          loginModal.style.display = 'block';
+          console.log("Login modal displayed via auth modal.");
+        });
+      }
+      
+      // Authentication modal: signup button
+      if (authSignupBtn) {
+        authSignupBtn.addEventListener('click', function() {
+          authModal.style.display = 'none';
+          signupModal.style.display = 'block';
+          console.log("Signup modal displayed via auth modal.");
+        });
+      }
+      
+      // Close authentication modal
+      if (closeAuthBtn) {
+        closeAuthBtn.addEventListener('click', function() {
+          authModal.style.display = 'none';
+          console.log("Authentication modal closed.");
+        });
+      }
+      
+      // Tab switching for account creation forms using top tabs
+      const tabButtons = document.querySelectorAll('.tab-button');
+      const accountForms = document.querySelectorAll('.account-form');
+      
+      tabButtons.forEach(button => {
+        button.addEventListener('click', function() {
+          // Remove active state from all tab buttons and forms
+          tabButtons.forEach(btn => btn.classList.remove('active'));
+          accountForms.forEach(form => form.classList.remove('active'));
+          
+          // Add active state to clicked button and corresponding form
+          button.classList.add('active');
+          const targetId = button.getAttribute('data-target');
+          if (document.getElementById(targetId)) {
+            document.getElementById(targetId).classList.add('active');
+            console.log("Switched to tab:", targetId);
+          } else {
+            console.error("Target form not found for tab:", targetId);
+          }
+        });
+      });
+      
+      // Form submission handling for account creation forms
+      const formElements = document.querySelectorAll('.account-creation-container form');
+      formElements.forEach(form => {
+        form.addEventListener('submit', function(e) {
+          e.preventDefault();
+          const accountType = form.accountType.value;
+          console.log("Form submitted for account type:", accountType);
+          
+          // Determine the display name input id based on account type
+          let displayName;
+          if (accountType === "Creator") {
+            displayName = document.getElementById('creator-displayname').value;
+          } else if (accountType === "Observer") {
+            displayName = document.getElementById('observer-displayname').value;
+          } else if (accountType === "Investor") {
+            displayName = document.getElementById('investor-displayname').value;
+          }
+          
+          alert("Account created for " + accountType + "!");
+          // Insert account creation logic here (e.g., blockchain transaction)
+          
+          // Store dynamic signup data into sessionStorage
+          sessionStorage.setItem('userAuthenticated', 'true');
+          sessionStorage.setItem('userDisplayName', displayName);
+          // Set default values (you can update these later as needed)
+          sessionStorage.setItem('tokenBalance', '0.00 JAL');
+          sessionStorage.setItem('recentTransactions', 'No recent transactions.');
+          
+          console.log("Signup data stored. Redirecting to dashboard...");
+          // Redirect to the dashboard page
+          window.location.href = 'pages/dashboard.html';
+        });
+      });
+      
+      // Login form submission handling
+      var loginForm = document.getElementById('login-form');
+      if (loginForm) {
+        loginForm.addEventListener('submit', function(e) {
+          e.preventDefault();
+          var username = document.getElementById('login-username').value;
+          // Add your login logic (authentication, API calls, etc.) here
+          alert("Logged in as " + username + "!");
+          sessionStorage.setItem('userAuthenticated', 'true');
+          sessionStorage.setItem('userDisplayName', username);
+          console.log("Login data stored. Redirecting to dashboard...");
+          window.location.href = 'pages/dashboard.html';
+        });
+      }
+      
+      // Close signup modal on clicking the close icon
+      var closeSignupBtn = document.getElementById('close-signup');
+      if (closeSignupBtn) {
+        closeSignupBtn.addEventListener('click', function() {
+          signupModal.style.display = 'none';
+          console.log("Signup modal closed.");
+        });
+      } else {
+        console.error("Close signup button not found!");
+      }
+      
+      // Close login modal on clicking the close icon
+      var closeLoginBtn = document.getElementById('close-login');
+      if (closeLoginBtn) {
+        closeLoginBtn.addEventListener('click', function() {
+          loginModal.style.display = 'none';
+          console.log("Login modal closed.");
+        });
+      } else {
+        console.error("Close login button not found!");
+      }
+      
+      // Policy Modals: Show Terms & Privacy when links are clicked
+      function showModal(modalId) {
+        var modal = document.getElementById(modalId);
+        if (modal) {
+          modal.style.display = 'block';
+          console.log("Showing modal:", modalId);
+        }
+      }
+      function closeModal(modalId) {
+        var modal = document.getElementById(modalId);
+        if (modal) {
+          modal.style.display = 'none';
+          console.log("Closing modal:", modalId);
+        }
+      }
+      
+      // Terms & Privacy Links (for all account forms)
+      var termsLinks = ['show-terms', 'show-terms2', 'show-terms3'];
+      var privacyLinks = ['show-privacy', 'show-privacy2', 'show-privacy3'];
+      
+      termsLinks.forEach(id => {
+        var elem = document.getElementById(id);
+        if (elem) {
+          elem.addEventListener('click', function(e) {
+            e.preventDefault();
+            showModal('terms-modal');
+          });
+        }
+      });
+      
+      privacyLinks.forEach(id => {
+        var elem = document.getElementById(id);
+        if (elem) {
+          elem.addEventListener('click', function(e) {
+            e.preventDefault();
+            showModal('privacy-modal');
+          });
+        }
+      });
+      
+      // Close policy modals on clicking the close icons
+      var closeTerms = document.getElementById('close-terms');
+      var closePrivacy = document.getElementById('close-privacy');
+      if (closeTerms) {
+        closeTerms.addEventListener('click', function() {
+          closeModal('terms-modal');
+        });
+      }
+      if (closePrivacy) {
+        closePrivacy.addEventListener('click', function() {
+          closeModal('privacy-modal');
+        });
+      }
+      
+      // Optionally, close policy modals if clicking outside the modal-content
+      window.addEventListener('click', function(event) {
+        if (event.target.classList.contains('policy-modal')) {
+          event.target.style.display = 'none';
+          console.log("Policy modal closed by clicking outside.");
+        }
+      });
+    });
+  </script>
+</body>
+</html>
