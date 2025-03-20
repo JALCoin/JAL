@@ -112,6 +112,7 @@
         <!-- Account Form Container (Only one form appears at a time) -->
         <div class="account-form-container">
           <!-- Creator Account Form -->
+<div id="form-creator" class="account-form active">
   <form id="creator-form">
     <input type="hidden" name="accountType" value="Creator">
     
@@ -122,7 +123,7 @@
     <!-- Token Symbol Field -->
     <label for="token-symbol">Token Symbol:</label>
     <input type="text" id="token-symbol" name="tokenSymbol" placeholder="e.g., JAL" required>
-    
+
     <!-- Password Field -->
     <label for="creator-password">Password:</label>
     <input type="password" id="creator-password" name="password" placeholder="Create a password" required>
@@ -172,6 +173,23 @@
         <input type="text" id="creator-telegram" name="telegram" placeholder="Telegram URL">
       </div>
     </div>
+    
+    <!-- Optional Email Field -->
+    <label for="creator-email">Email (Optional):</label>
+    <input type="email" id="creator-email" name="email" placeholder="Your email address">
+    
+    <!-- Terms and Conditions -->
+    <div class="terms">
+      <label>
+        <input type="checkbox" name="terms" required>
+        I agree to the <a href="#" id="show-terms">Terms and Conditions</a> and <a href="#" id="show-privacy">Privacy Policy</a>.
+      </label>
+    </div>
+    
+    <!-- Submit Button -->
+    <button type="submit" class="cta">Create Creator Account</button>
+  </form>
+</div>
     
     <!-- Optional Email Field -->
     <label for="creator-email">Email (Optional):</label>
