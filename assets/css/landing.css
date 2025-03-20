@@ -7,13 +7,8 @@ html, body {
   overflow-x: hidden; /* Prevent horizontal scroll */
 }
 
-/* Use the original background for contract-page (parchment texture) 
-   OR if you want to show the video behind the modal, remove any solid override.
-   In this case, we leave the body background untouched, so the video background works. */
+/* For contract-page (if needed) */
 body.contract-page {
-  /* Remove the solid background override to keep the video visible */
-  /* background: url('assets/images/parchment-texture.jpg') no-repeat center center fixed; */
-  /* background-size: cover; */
   font-family: 'Cinzel', serif, 'Roboto', sans-serif;
   color: #333;
 }
@@ -23,7 +18,7 @@ body.contract-page {
    ========================================================================== */
 #landing-overlay {
   position: fixed;
-  top: 10px;              /* Margin for visible border */
+  top: 10px;
   left: 10px;
   width: calc(100% - 20px);
   height: calc(100vh - 20px);
@@ -35,9 +30,8 @@ body.contract-page {
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
-  border: 4px solid #d4af37;       /* Golden border */
-  border-radius: 20px;             /* Rounded corners */
-  /* Outward & Inward Pulsating Glow */
+  border: 4px solid #d4af37;
+  border-radius: 20px;
   box-shadow: 
     0 0 10px 2px rgba(212, 175, 55, 0.5), 
     inset 0 0 5px 2px rgba(212, 175, 55, 0.3);
@@ -147,12 +141,11 @@ body.contract-page {
   }
 }
 
-/* Simple container for hero text */
 .hero-text-container {
   position: relative;
   padding: 40px;
   background: transparent;
-  border-radius: 10px; /* Optional: add rounded corners if desired */
+  border-radius: 10px;
 }
 
 /* ==========================================================================
@@ -236,10 +229,10 @@ body.contract-page {
 }
 
 /* ==========================================================================
-   Modal Styles (Used for Wallet/Signup/Account Creation and Policy Popups)
+   Modal Styles (For Wallet/Signup/Login/Policy Popups)
    ========================================================================== */
 .modal {
-  display: none; /* Hidden by default */
+  display: none;
   position: fixed;
   z-index: 2000;
   left: 0;
@@ -247,22 +240,30 @@ body.contract-page {
   width: 100%;
   height: 100%;
   overflow: auto;
-  background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent background */
+  background-color: rgba(0, 0, 0, 0.6);
 }
 
 .modal-content {
-  /* We use a semi-transparent background so the video is still visible */
-  background-color: rgba(255, 255, 255, 0.9);
+  background-color: rgba(255, 255, 255, 0.95);
   margin: 5% auto;
   padding: 30px;
   border-radius: 10px;
   max-width: 600px;
   text-align: center;
   box-shadow: 0 0 20px rgba(0,0,0,0.2);
+  position: relative;
+  animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
 }
 
 .close-modal {
-  float: right;
+  position: absolute;
+  top: 10px;
+  right: 15px;
   font-size: 28px;
   font-weight: bold;
   cursor: pointer;
@@ -327,15 +328,31 @@ body.contract-page {
 
 .account-form label {
   margin: 10px 0 5px;
+  font-weight: bold;
 }
 
 .account-form input[type="text"],
 .account-form input[type="email"],
+.account-form input[type="password"],
 .account-form textarea,
 .account-form input[type="file"] {
-  padding: 8px;
+  padding: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
+  font-size: 1rem;
+  width: 100%;
+  box-sizing: border-box;
+  margin-bottom: 15px;
+  transition: border-color 0.3s;
+}
+
+.account-form input[type="text"]:focus,
+.account-form input[type="email"]:focus,
+.account-form input[type="password"]:focus,
+.account-form textarea:focus,
+.account-form input[type="file"]:focus {
+  border-color: var(--primary-color);
+  outline: none;
 }
 
 .account-form textarea {
@@ -347,11 +364,12 @@ body.contract-page {
   background: var(--primary-color, #d4af37);
   color: #fff;
   border: none;
-  padding: 10px;
+  padding: 12px 20px;
   margin-top: 15px;
   border-radius: 5px;
   cursor: pointer;
   transition: transform 0.3s, background 0.3s;
+  font-size: 1.1rem;
 }
 
 .account-form .cta:hover {
@@ -361,6 +379,7 @@ body.contract-page {
 
 .terms {
   margin: 15px 0;
+  font-size: 0.9rem;
 }
 
 /* ==========================================================================
@@ -381,7 +400,7 @@ body.contract-page {
 
 .social-item label {
   margin-right: 5px;
-  width: 12px !important; /* Ensure the container is 12px */
+  width: 12px !important;
   display: inline-block;
 }
 
@@ -393,8 +412,16 @@ body.contract-page {
 
 .social-item input {
   flex: 1 1 100px;
-  padding: 4px;
+  padding: 8px;
   font-size: 0.9rem;
   border: 1px solid #ccc;
   border-radius: 5px;
+}
+
+/* ==========================================================================
+   Additional refinements for modals (optional)
+   ========================================================================== */
+.modal .cta {
+  width: 100%;
+  margin-top: 20px;
 }
