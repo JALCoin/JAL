@@ -51,7 +51,7 @@ body.contract-page {
   }
 }
 
-/* Disable heavy animations for users who prefer reduced motion */
+/* Reduce motion for users who prefer it */
 @media (prefers-reduced-motion: reduce) {
   #landing-overlay {
     animation: none;
@@ -91,11 +91,11 @@ body.contract-page {
   text-align: center;
 }
 
-.landing-header .container {
+/* Ensure the logo container uses flexbox for proper centering */
+.landing-header .logo-link {
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
+  align-items: center;
 }
 
 .landing-header .logo-link img {
@@ -436,6 +436,7 @@ body.contract-page {
    Mobile Adjustments (max-width: 768px)
    ========================================================================== */
 @media (max-width: 768px) {
+  /* Adjust landing overlay to remove any horizontal overflow */
   #landing-overlay {
     top: 5px;
     left: 5px;
@@ -443,13 +444,29 @@ body.contract-page {
     height: calc(100vh - 10px);
     border: 2px solid #d4af37;
     border-radius: 10px;
-    /* Disable heavy animation for smoother performance on mobile */
     animation: none;
     box-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+  }
+  
+  /* Center the logo container explicitly */
+  .landing-header {
+    text-align: center;
+  }
+  .landing-header .logo-link {
+    margin: 0 auto;
+    width: 100%;
+    display: flex;
+    justify-content: center;
   }
   .landing-header .logo-link img {
     height: 20vh;
   }
+  
+  /* Hide video background to improve performance and scrolling */
+  .hero-video {
+    display: none;
+  }
+  
   .hero-text {
     margin-top: 5%;
     padding: 0 5%;
@@ -457,12 +474,16 @@ body.contract-page {
   .hero-text h1 {
     font-size: 2.5rem;
     margin-bottom: 5%;
+    /* Disable glow animation for smoother performance */
+    animation: none;
   }
   .hero-text p {
     font-size: 1rem;
     margin: 0 auto 5%;
     max-width: 100%;
+    animation: none;
   }
+  
   .info-section,
   .roadmap-section {
     margin: 10px auto;
