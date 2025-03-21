@@ -18,10 +18,10 @@ body.contract-page {
    ========================================================================== */
 #landing-overlay {
   position: fixed;
-  top: 10px;
-  left: 10px;
-  width: calc(100% - 20px);
-  height: calc(100vh - 20px);
+  top: 2%;
+  left: 2%;
+  width: 96%;
+  height: 96%;
   background: rgba(255, 255, 255, 0.95);
   z-index: 1000;
   overflow: hidden;
@@ -30,24 +30,24 @@ body.contract-page {
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
-  border: 4px solid #d4af37;
-  border-radius: 20px;
+  border: 0.5% solid #d4af37;
+  border-radius: 2%;
   box-shadow: 
-    0 0 10px 2px rgba(212, 175, 55, 0.5), 
-    inset 0 0 5px 2px rgba(212, 175, 55, 0.3);
+    0 0 1% 0.2% rgba(212, 175, 55, 0.5), 
+    inset 0 0 0.5% 0.2% rgba(212, 175, 55, 0.3);
   animation: pulseGlow 3s ease-in-out infinite;
 }
 
 @keyframes pulseGlow {
   0%, 100% {
     box-shadow: 
-      0 0 10px 2px rgba(212, 175, 55, 0.5),
-      inset 0 0 5px 2px rgba(212, 175, 55, 0.3);
+      0 0 1% 0.2% rgba(212, 175, 55, 0.5),
+      inset 0 0 0.5% 0.2% rgba(212, 175, 55, 0.3);
   }
   50% {
     box-shadow: 
-      0 0 25px 6px rgba(212, 175, 55, 1),
-      inset 0 0 15px 4px rgba(212, 175, 55, 0.7);
+      0 0 2.5% 0.6% rgba(212, 175, 55, 1),
+      inset 0 0 1.5% 0.4% rgba(212, 175, 55, 0.7);
   }
 }
 
@@ -60,7 +60,7 @@ body.contract-page {
   width: 100%;
   max-height: 100vh;
   overflow-y: auto;
-  padding: 20px;
+  padding: 2%;
   box-sizing: border-box;
 }
 
@@ -80,7 +80,7 @@ body.contract-page {
    Landing Header & Logo
    ========================================================================== */
 .landing-header {
-  padding: 20px 0;
+  padding: 2% 0;
   text-align: center;
 }
 
@@ -92,7 +92,8 @@ body.contract-page {
 }
 
 .landing-header .logo-link img {
-  height: 350px;
+  /* Instead of a fixed pixel height, using viewport-height so the logo scales */
+  height: 30vh;
   transition: transform 0.3s;
 }
 
@@ -104,10 +105,11 @@ body.contract-page {
    Hero Text Section
    ========================================================================== */
 .hero-text {
-  margin-top: 20px;
+  margin-top: 5%;
   text-align: center;
-  padding: 0 20px;
+  padding: 0 2%;
   color: #fef4e6;
+  /* Note: text-shadow blur values remain in px for legibility */
   text-shadow: 0 0 15px var(--primary-color),
                0 0 30px var(--secondary-color),
                0 0 45px var(--accent-color);
@@ -115,16 +117,16 @@ body.contract-page {
 
 .hero-text h1 {
   font-size: 3.5rem;
-  margin-bottom: 20px;
+  margin-bottom: 5%;
   font-weight: 700;
   animation: glow 1.5s ease-in-out infinite alternate;
 }
 
 .hero-text p {
   font-size: 1.3rem;
-  margin: 0 auto 40px;
+  margin: 0 auto 5%;
   line-height: 1.6;
-  max-width: 800px;
+  max-width: 90%;
   animation: glow 1.8s ease-in-out infinite alternate;
 }
 
@@ -143,9 +145,9 @@ body.contract-page {
 
 .hero-text-container {
   position: relative;
-  padding: 40px;
+  padding: 5%;
   background: transparent;
-  border-radius: 10px;
+  border-radius: 2%;
 }
 
 /* ==========================================================================
@@ -153,22 +155,22 @@ body.contract-page {
    ========================================================================== */
 .info-section,
 .roadmap-section {
-  margin: 30px auto;
-  max-width: 800px;
+  margin: 3% auto;
+  max-width: 90%;
   background: rgba(255, 255, 255, 0.9);
-  border: 1px solid var(--primary-color);
-  border-radius: 8px;
-  padding: 20px;
-  box-shadow: 0 0 20px var(--glow-color);
+  border: 0.1% solid var(--primary-color);
+  border-radius: 2%;
+  padding: 2%;
+  box-shadow: 0 0 2% var(--glow-color);
   transition: box-shadow 0.3s ease, transform 0.3s;
   text-align: left;
-  margin-bottom: 30px;
+  margin-bottom: 3%;
 }
 
 .info-section h2,
 .roadmap-section h2 {
   font-size: 1.8rem;
-  margin-bottom: 10px;
+  margin-bottom: 2%;
   color: var(--secondary-color);
   text-transform: uppercase;
   letter-spacing: 1px;
@@ -182,43 +184,43 @@ body.contract-page {
 
 .info-section:hover,
 .roadmap-section:hover {
-  box-shadow: 0 0 30px var(--glow-color);
-  transform: translateY(-3px);
+  box-shadow: 0 0 3% var(--glow-color);
+  transform: translateY(-1%);
 }
 
 .roadmap-section ol {
   list-style: decimal inside;
-  padding-left: 20px;
+  padding-left: 2%;
 }
 
 .roadmap-section li {
-  margin-bottom: 15px;
+  margin-bottom: 2%;
 }
 
 /* ==========================================================================
    Contract Footer (CTA Section)
    ========================================================================== */
 .contract-footer {
-  margin-top: 40px;
-  padding-top: 20px;
-  border-top: 1px dashed #ccc;
+  margin-top: 4%;
+  padding-top: 2%;
+  border-top: 0.1% dashed #ccc;
   text-align: center;
 }
 
 .contract-footer p {
   font-size: 1.2rem;
-  margin-bottom: 20px;
+  margin-bottom: 2%;
 }
 
 .cta {
   display: inline-block;
-  padding: 15px 30px;
+  padding: 2% 4%;
   font-size: 1.2rem;
   background: var(--primary-color);
   color: #fff;
   text-decoration: none;
   border: none;
-  border-radius: 5px;
+  border-radius: 2%;
   cursor: pointer;
   transition: background 0.3s, transform 0.3s;
 }
@@ -246,11 +248,11 @@ body.contract-page {
 .modal-content {
   background-color: rgba(255, 255, 255, 0.95);
   margin: 5% auto;
-  padding: 30px;
-  border-radius: 10px;
-  max-width: 600px;
+  padding: 3%;
+  border-radius: 2%;
+  max-width: 90%;
   text-align: center;
-  box-shadow: 0 0 20px rgba(0,0,0,0.2);
+  box-shadow: 0 0 2% rgba(0,0,0,0.2);
   position: relative;
   animation: fadeIn 0.5s ease;
 }
@@ -262,9 +264,9 @@ body.contract-page {
 
 .close-modal {
   position: absolute;
-  top: 10px;
-  right: 15px;
-  font-size: 28px;
+  top: 2%;
+  right: 2%;
+  font-size: 2rem;
   font-weight: bold;
   cursor: pointer;
   color: #333;
@@ -280,22 +282,22 @@ body.contract-page {
 .account-creation-container {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 2%;
 }
 
 .account-type-tabs {
   display: flex;
   justify-content: center;
-  gap: 10px;
-  margin-bottom: 20px;
+  gap: 1%;
+  margin-bottom: 2%;
 }
 
 .tab-button {
   background: #d4af37;
   color: #fff;
   border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
+  padding: 1% 2%;
+  border-radius: 2%;
   cursor: pointer;
   transition: background 0.3s;
 }
@@ -327,7 +329,7 @@ body.contract-page {
 }
 
 .account-form label {
-  margin: 10px 0 5px;
+  margin: 1% 0 0.5%;
   font-weight: bold;
 }
 
@@ -336,13 +338,13 @@ body.contract-page {
 .account-form input[type="password"],
 .account-form textarea,
 .account-form input[type="file"] {
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+  padding: 1%;
+  border: 0.1% solid #ccc;
+  border-radius: 2%;
   font-size: 1rem;
   width: 100%;
   box-sizing: border-box;
-  margin-bottom: 15px;
+  margin-bottom: 1%;
   transition: border-color 0.3s;
 }
 
@@ -357,16 +359,16 @@ body.contract-page {
 
 .account-form textarea {
   resize: vertical;
-  min-height: 80px;
+  min-height: 10vh;
 }
 
 .account-form .cta {
   background: var(--primary-color, #d4af37);
   color: #fff;
   border: none;
-  padding: 12px 20px;
-  margin-top: 15px;
-  border-radius: 5px;
+  padding: 1.5% 2%;
+  margin-top: 1.5%;
+  border-radius: 2%;
   cursor: pointer;
   transition: transform 0.3s, background 0.3s;
   font-size: 1.1rem;
@@ -378,7 +380,7 @@ body.contract-page {
 }
 
 .terms {
-  margin: 15px 0;
+  margin: 1.5% 0;
   font-size: 0.9rem;
 }
 
@@ -388,9 +390,9 @@ body.contract-page {
 .social-links {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 1%;
   align-items: center;
-  margin: 10px 0;
+  margin: 1% 0;
 }
 
 .social-item {
@@ -399,23 +401,23 @@ body.contract-page {
 }
 
 .social-item label {
-  margin-right: 5px;
-  width: 12px !important;
+  margin-right: 0.5%;
+  width: 1% !important;
   display: inline-block;
 }
 
 .social-item label img {
-  width: 12px !important;
-  height: 12px !important;
+  width: 1% !important;
+  height: 1% !important;
   object-fit: contain;
 }
 
 .social-item input {
   flex: 1 1 100px;
-  padding: 8px;
+  padding: 0.8%;
   font-size: 0.9rem;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+  border: 0.1% solid #ccc;
+  border-radius: 2%;
 }
 
 /* ==========================================================================
@@ -423,5 +425,5 @@ body.contract-page {
    ========================================================================== */
 .modal .cta {
   width: 100%;
-  margin-top: 20px;
+  margin-top: 2%;
 }
