@@ -529,4 +529,20 @@ body.contract-page {
   .tab-button {
     padding: 5px 10px;
   }
+   /* Ensure the "Enter Dashboard" button is visible and fixed at the bottom */
+  .enter-dashboard {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1100;
+    display: block;
+    padding: 10px 20px;
+    font-size: 1rem;
+    background: var(--primary-color);
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+    text-decoration: none;
 }
