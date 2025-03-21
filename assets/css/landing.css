@@ -444,19 +444,49 @@ body.contract-page {
    Mobile Adjustments (max-width: 768px)
    ========================================================================== */
 @media (max-width: 768px) {
+  /* Adjust landing overlay to perfectly fit the viewport */
   #landing-overlay {
-    position: fixed;
     top: 0;
     left: 0;
-    width: 100%;       /* Use 100% instead of 100vw */
+    width: 100%;
     height: 100vh;
     border: none;
-    border-radius: 0;  /* Remove rounded corners to avoid overflow */
+    border-radius: 0;
     animation: none;
     box-shadow: none;
     overflow-x: hidden;
   }
   
+  /* Make the landing content a column flex container so that the footer gets pushed to the bottom */
+  .landing-content {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;  /* Ensure the content covers the full viewport height */
+    padding: 2%;
+  }
+  
+  /* Let the footer (and button) naturally position at the bottom */
+  .contract-footer {
+    margin-top: auto;
+    padding-top: 10px; /* Optional: add some spacing above the footer */
+  }
+  
+  /* Remove any fixed positioning from the Enter Dashboard button */
+  #enter-dashboard {
+    position: static;
+    display: block;
+    margin: 20px auto; /* Center the button with some vertical spacing */
+    padding: 10px 20px;
+    font-size: 1rem;
+    background: var(--primary-color);
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+    text-decoration: none;
+  }
+  
+  /* Other mobile adjustments remain as before */
   .landing-header {
     text-align: center;
     width: 100%;
@@ -528,22 +558,5 @@ body.contract-page {
   
   .tab-button {
     padding: 5px 10px;
-  }
-   /* Ensure the "Enter Dashboard" button is visible and fixed at the bottom */
-  #enter-dashboard {
-    position: fixed;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 1100;
-    display: block;
-    padding: 10px 20px;
-    font-size: 1rem;
-    background: var(--primary-color);
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    text-align: center;
-    text-decoration: none;
   }
 }
