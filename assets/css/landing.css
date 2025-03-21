@@ -1,10 +1,18 @@
 /* ==========================================================================
    Global Resets & Base Styles
    ========================================================================== */
-/* Global rule to prevent horizontal overflow */
+/* Global Reset */
 html, body {
-  max-width: 100vw;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  max-width: 100%;
   overflow-x: hidden;
+  box-sizing: border-box;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
 }
 
 /* For contract-page (if needed) */
@@ -436,26 +444,26 @@ body.contract-page {
    Mobile Adjustments (max-width: 768px)
    ========================================================================== */
 @media (max-width: 768px) {
-  /* Adjust landing overlay to perfectly fit the viewport */
   #landing-overlay {
+    position: fixed;
     top: 0;
     left: 0;
-    width: 100vw;
+    width: 100%;       /* Use 100% instead of 100vw */
     height: 100vh;
-    border: 2px solid #d4af37;
-    border-radius: 0; /* Remove rounded corners to avoid overflow */
+    border: none;
+    border-radius: 0;  /* Remove rounded corners to avoid overflow */
     animation: none;
     box-shadow: none;
-    box-sizing: border-box;
+    overflow-x: hidden;
   }
   
-  /* Ensure the header and logo are centered */
   .landing-header {
     text-align: center;
     width: 100%;
     padding: 0;
     margin: 0;
   }
+  
   .landing-header .logo-link {
     display: flex;
     justify-content: center;
@@ -464,13 +472,13 @@ body.contract-page {
     margin: 0;
     padding: 0;
   }
+  
   .landing-header .logo-link img {
     display: block;
     margin: 0 auto;
     height: 20vh;
   }
   
-  /* Hide the video background to improve performance */
   .hero-video {
     display: none;
   }
@@ -500,20 +508,24 @@ body.contract-page {
     border-radius: 5px;
     box-shadow: 0 0 10px var(--glow-color);
   }
+  
   .cta {
     padding: 10px 20px;
     font-size: 1rem;
     border-radius: 5px;
   }
+  
   .modal-content {
     padding: 10px;
     border-radius: 5px;
     max-width: 95%;
   }
+  
   .account-type-tabs {
     gap: 5px;
     margin-bottom: 10px;
   }
+  
   .tab-button {
     padding: 5px 10px;
   }
