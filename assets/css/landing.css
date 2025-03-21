@@ -530,7 +530,7 @@ body.contract-page {
     padding: 5px 10px;
   }
    /* Ensure the "Enter Dashboard" button is visible and fixed at the bottom */
-  .enter-dashboard {
+  #enter-dashboard {
     position: fixed;
     bottom: 20px;
     left: 50%;
@@ -545,4 +545,5 @@ body.contract-page {
     border-radius: 5px;
     text-align: center;
     text-decoration: none;
+  }
 }
