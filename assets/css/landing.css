@@ -14,7 +14,7 @@ body.contract-page {
 }
 
 /* ==========================================================================
-   Landing Overlay with Pulsating Golden Border
+   Landing Overlay with Pulsating Golden Border (Desktop)
    ========================================================================== */
 #landing-overlay {
   position: fixed;
@@ -48,6 +48,13 @@ body.contract-page {
     box-shadow: 
       0 0 2.5% 0.6% rgba(212, 175, 55, 1),
       inset 0 0 1.5% 0.4% rgba(212, 175, 55, 0.7);
+  }
+}
+
+/* Disable heavy animations for users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  #landing-overlay {
+    animation: none;
   }
 }
 
@@ -92,7 +99,7 @@ body.contract-page {
 }
 
 .landing-header .logo-link img {
-  /* Instead of a fixed pixel height, using viewport-height so the logo scales */
+  /* Use viewport height for scaling on desktop */
   height: 30vh;
   transition: transform 0.3s;
 }
@@ -109,7 +116,6 @@ body.contract-page {
   text-align: center;
   padding: 0 2%;
   color: #fef4e6;
-  /* Note: text-shadow blur values remain in px for legibility */
   text-shadow: 0 0 15px var(--primary-color),
                0 0 30px var(--secondary-color),
                0 0 45px var(--accent-color);
@@ -420,10 +426,67 @@ body.contract-page {
   border-radius: 2%;
 }
 
-/* ==========================================================================
-   Additional refinements for modals (optional)
-   ========================================================================== */
+/* Additional refinements for modals (optional) */
 .modal .cta {
   width: 100%;
   margin-top: 2%;
+}
+
+/* ==========================================================================
+   Mobile Adjustments (max-width: 768px)
+   ========================================================================== */
+@media (max-width: 768px) {
+  #landing-overlay {
+    top: 5px;
+    left: 5px;
+    width: calc(100% - 10px);
+    height: calc(100vh - 10px);
+    border: 2px solid #d4af37;
+    border-radius: 10px;
+    /* Disable heavy animation for smoother performance on mobile */
+    animation: none;
+    box-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+  }
+  .landing-header .logo-link img {
+    height: 20vh;
+  }
+  .hero-text {
+    margin-top: 5%;
+    padding: 0 5%;
+  }
+  .hero-text h1 {
+    font-size: 2.5rem;
+    margin-bottom: 5%;
+  }
+  .hero-text p {
+    font-size: 1rem;
+    margin: 0 auto 5%;
+    max-width: 100%;
+  }
+  .info-section,
+  .roadmap-section {
+    margin: 10px auto;
+    padding: 10px;
+    max-width: 100%;
+    border: 1px solid var(--primary-color);
+    border-radius: 5px;
+    box-shadow: 0 0 10px var(--glow-color);
+  }
+  .cta {
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 5px;
+  }
+  .modal-content {
+    padding: 10px;
+    border-radius: 5px;
+    max-width: 95%;
+  }
+  .account-type-tabs {
+    gap: 5px;
+    margin-bottom: 10px;
+  }
+  .tab-button {
+    padding: 5px 10px;
+  }
 }
