@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta name="description" content="JAL/SOL - Gateway to Creative Evolution. A platform where ancient numeracy meets modern blockchain innovation to empower creative wealth.">
   <title>JAL/SOL - Gateway to Creative Evolution</title>
   <!-- Global Styles -->
@@ -112,73 +112,84 @@
         <!-- Account Form Container (Only one form appears at a time) -->
         <div class="account-form-container">
           <!-- Creator Account Form -->
-          <div id="form-creator" class="account-form active">
-            <form id="creator-form">
-              <input type="hidden" name="accountType" value="Creator">
-              <label for="creator-displayname">Display Name:</label>
-              <input type="text" id="creator-displayname" name="displayName" placeholder="Enter a display name" required>
+<div id="form-creator" class="account-form active">
+  <form id="creator-form">
+    <input type="hidden" name="accountType" value="Creator">
+    
+    <!-- Display Name Field -->
+    <label for="creator-displayname">Display Name:</label>
+    <input type="text" id="creator-displayname" name="displayName" placeholder="Enter your display name" required>
+    
+    <!-- Token Symbol Field -->
+    <label for="token-symbol">Token Symbol:</label>
+    <input type="text" id="token-symbol" name="tokenSymbol" placeholder="e.g., JAL" required>
 
-              <label for="creator-username">Username:</label>
-              <input type="text" id="creator-username" name="username" placeholder="Choose a username" required>
-
-              <label for="creator-password">Password:</label>
-              <input type="password" id="creator-password" name="password" placeholder="Create a password" required>
-
-              <!-- Integrated Token Fields -->
-              <label for="token-name">Name:</label>
-              <input type="text" id="token-name" name="tokenName" placeholder="e.g., JAL Token" required>
-              <label for="token-symbol">Symbol:</label>
-              <input type="text" id="token-symbol" name="tokenSymbol" placeholder="e.g., JAL" required>
-              <label for="token-logo">Logo (Optional):</label>
-              <input type="file" id="token-logo" name="tokenLogo" accept="image/*">
-              <label for="creator-wallet">Wallet Address:</label>
-              <input type="text" id="creator-wallet" name="walletAddress" readonly value="0xABC...123">
-              <label for="creator-bio">Bio:</label>
-              <textarea id="creator-bio" name="bio" placeholder="Tell us about yourself"></textarea>
-              <!-- Social Links Grouped in a Compact Layout -->
-              <div class="social-links">
-                <div class="social-item">
-                  <label for="creator-x">
-                    <img src="assets/images/icons/x-icon.png" alt="X" title="X">
-                  </label>
-                  <input type="text" id="creator-x" name="x" placeholder="X URL">
-                </div>
-                <div class="social-item">
-                  <label for="creator-instagram">
-                    <img src="assets/images/icons/instagram-icon.png" alt="Instagram" title="Instagram">
-                  </label>
-                  <input type="text" id="creator-instagram" name="instagram" placeholder="Instagram URL">
-                </div>
-                <div class="social-item">
-                  <label for="creator-tiktok">
-                    <img src="assets/images/icons/tiktok-icon.png" alt="TikTok" title="TikTok">
-                  </label>
-                  <input type="text" id="creator-tiktok" name="tiktok" placeholder="TikTok URL">
-                </div>
-                <div class="social-item">
-                  <label for="creator-twitch">
-                    <img src="assets/images/icons/twitch-icon.png" alt="Twitch" title="Twitch">
-                  </label>
-                  <input type="text" id="creator-twitch" name="twitch" placeholder="Twitch URL">
-                </div>
-                <div class="social-item">
-                  <label for="creator-telegram">
-                    <img src="assets/images/icons/telegram-icon.png" alt="Telegram" title="Telegram">
-                  </label>
-                  <input type="text" id="creator-telegram" name="telegram" placeholder="Telegram URL">
-                </div>
-              </div>
-              <label for="creator-email">Email (Optional):</label>
-              <input type="email" id="creator-email" name="email" placeholder="Your email address">
-              <div class="terms">
-                <label>
-                  <input type="checkbox" name="terms" required>
-                  I agree to the <a href="#" id="show-terms">Terms and Conditions</a> and <a href="#" id="show-privacy">Privacy Policy</a>.
-                </label>
-              </div>
-              <button type="submit" class="cta">Create Creator Account</button>
-            </form>
-          </div>
+    <!-- Password Field -->
+    <label for="creator-password">Password:</label>
+    <input type="password" id="creator-password" name="password" placeholder="Create a password" required>
+    
+    <!-- Optional Logo Upload -->
+    <label for="token-logo">Logo (Optional):</label>
+    <input type="file" id="token-logo" name="tokenLogo" accept="image/*">
+    
+    <!-- Wallet Address (Read-only for now) -->
+    <label for="creator-wallet">Wallet Address:</label>
+    <input type="text" id="creator-wallet" name="walletAddress" readonly value="0xABC...123">
+    
+    <!-- Bio Field -->
+    <label for="creator-bio">Bio:</label>
+    <textarea id="creator-bio" name="bio" placeholder="Tell us about yourself"></textarea>
+    
+    <!-- Social Links (Optional) -->
+    <div class="social-links">
+      <div class="social-item">
+        <label for="creator-x">
+          <img src="assets/images/icons/x-icon.png" alt="X" title="X">
+        </label>
+        <input type="text" id="creator-x" name="x" placeholder="X URL">
+      </div>
+      <div class="social-item">
+        <label for="creator-instagram">
+          <img src="assets/images/icons/instagram-icon.png" alt="Instagram" title="Instagram">
+        </label>
+        <input type="text" id="creator-instagram" name="instagram" placeholder="Instagram URL">
+      </div>
+      <div class="social-item">
+        <label for="creator-tiktok">
+          <img src="assets/images/icons/tiktok-icon.png" alt="TikTok" title="TikTok">
+        </label>
+        <input type="text" id="creator-tiktok" name="tiktok" placeholder="TikTok URL">
+      </div>
+      <div class="social-item">
+        <label for="creator-twitch">
+          <img src="assets/images/icons/twitch-icon.png" alt="Twitch" title="Twitch">
+        </label>
+        <input type="text" id="creator-twitch" name="twitch" placeholder="Twitch URL">
+      </div>
+      <div class="social-item">
+        <label for="creator-telegram">
+          <img src="assets/images/icons/telegram-icon.png" alt="Telegram" title="Telegram">
+        </label>
+        <input type="text" id="creator-telegram" name="telegram" placeholder="Telegram URL">
+      </div>
+    </div>
+    
+    <!-- Optional Email Field -->
+    <label for="creator-email">Email (Optional):</label>
+    <input type="email" id="creator-email" name="email" placeholder="Your email address">
+    
+    <!-- Terms and Conditions -->
+    <div class="terms">
+      <label>
+        <input type="checkbox" name="terms" required>
+        I agree to the <a href="#" id="show-terms">Terms and Conditions</a> and <a href="#" id="show-privacy">Privacy Policy</a>.
+      </label>
+    </div>
+    
+    <!-- Submit Button -->
+    <button type="submit" class="cta">Create Creator Account</button>
+  </form>
+</div>
           
           <!-- Observer Account Form -->
           <div id="form-observer" class="account-form">
@@ -193,10 +204,12 @@
               <label for="observer-password">Password:</label>
               <input type="password" id="observer-password" name="password" placeholder="Create a password" required>
 
-              <label for="observer-wallet">Wallet Address:</label>
-              <input type="text" id="observer-wallet" name="walletAddress" readonly value="0xABC...123">
               <label for="observer-profilepic">Profile Picture (Optional):</label>
               <input type="file" id="observer-profilepic" name="profilePic" accept="image/*">
+
+              <label for="observer-wallet">Wallet Address:</label>
+              <input type="text" id="observer-wallet" name="walletAddress" readonly value="0xABC...123">
+        
               <label for="observer-bio">Bio:</label>
               <textarea id="observer-bio" name="bio" placeholder="Tell us about yourself"></textarea>
               <!-- Social Links for Observer -->
@@ -257,10 +270,12 @@
               <label for="investor-password">Password:</label>
               <input type="password" id="investor-password" name="password" placeholder="Create a password" required>
 
-              <label for="investor-wallet">Wallet Address:</label>
-              <input type="text" id="investor-wallet" name="walletAddress" readonly value="0xABC...123">
               <label for="investor-profilepic">Profile Picture (Optional):</label>
               <input type="file" id="investor-profilepic" name="profilePic" accept="image/*">
+
+              <label for="investor-wallet">Wallet Address:</label>
+              <input type="text" id="investor-wallet" name="walletAddress" readonly value="0xABC...123">
+              
               <label for="investor-bio">Bio:</label>
               <textarea id="investor-bio" name="bio" placeholder="Tell us about yourself"></textarea>
               <!-- Social Links for Investor -->

@@ -1,13 +1,27 @@
 /* ==========================================================================
-   Dashboard Base Styles
+   Global Reset & Base Styles
    ========================================================================== */
-body {
+html, body {
   margin: 0;
+  padding: 0;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  box-sizing: border-box;
+}
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+body {
   font-family: 'Cinzel', serif, 'Roboto', sans-serif;
   background: #f4f4f4;
   color: #333;
 }
 
+/* ==========================================================================
+   Container
+   ========================================================================== */
 .container {
   width: 90%;
   max-width: 1200px;
@@ -114,7 +128,7 @@ body {
 }
 
 #dashboard-sidebar .hamburger-btn {
-   position: absolute;
+  position: absolute;
   top: 10px;
   left: -90px; /* Adjust this value as needed */
   z-index: 210; /* Ensures the button stays above the sidebar border */
@@ -234,6 +248,13 @@ body {
   .dashboard-main {
     margin-left: 0;
     margin-right: 0;
+    /* Extra bottom padding so content isn't covered by mobile navigation */
+    padding-bottom: 100px;
+  }
+  
+  /* Optionally, add extra bottom space to the overall wrapper */
+  #dashboard-wrapper {
+    padding-bottom: 100px;
   }
 }
 

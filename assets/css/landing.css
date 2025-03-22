@@ -432,6 +432,137 @@ body.contract-page {
   font-size: 0.9rem;
   border: 0.1% solid #ccc;
   border-radius: 2%;
+<<<<<<< HEAD
+=======
+}
+
+/* Additional refinements for modals (optional) */
+.modal .cta {
+  width: 100%;
+  margin-top: 2%;
+}
+
+/* ==========================================================================
+   Mobile Adjustments (max-width: 768px)
+   ========================================================================== */
+@media (max-width: 768px) {
+  /* Adjust landing overlay to perfectly fit the viewport */
+  #landing-overlay {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    border: none;
+    border-radius: 0;
+    animation: none;
+    box-shadow: none;
+    overflow-x: hidden;
+  }
+  
+  /* Make the landing content a column flex container so that the footer gets pushed to the bottom */
+  .landing-content {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;  /* Ensure the content covers the full viewport height */
+    padding: 2%;
+     padding-bottom: 100px;
+  }
+  
+  /* Let the footer (and button) naturally position at the bottom */
+  .contract-footer {
+    margin-top: auto;
+    padding-top: 10px; /* Optional: add some spacing above the footer */
+  }
+  
+  /* Remove any fixed positioning from the Enter Dashboard button */
+  #enter-dashboard {
+    position: static;
+    display: block;
+    margin: 20px auto; /* Center the button with some vertical spacing */
+    padding: 10px 20px;
+    font-size: 1rem;
+    background: var(--primary-color);
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+    text-decoration: none;
+  }
+  
+  /* Other mobile adjustments remain as before */
+  .landing-header {
+    text-align: center;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .landing-header .logo-link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .landing-header .logo-link img {
+    display: block;
+    margin: 0 auto;
+    height: 20vh;
+  }
+  
+  .hero-video {
+    display: none;
+  }
+  
+  .hero-text {
+    margin-top: 5%;
+    padding: 0 5%;
+  }
+  .hero-text h1 {
+    font-size: 2.5rem;
+    margin-bottom: 5%;
+    animation: none;
+  }
+  .hero-text p {
+    font-size: 1rem;
+    margin: 0 auto 5%;
+    max-width: 100%;
+    animation: none;
+  }
+  
+  .info-section,
+  .roadmap-section {
+    margin: 10px auto;
+    padding: 10px;
+    max-width: 100%;
+    border: 1px solid var(--primary-color);
+    border-radius: 5px;
+    box-shadow: 0 0 10px var(--glow-color);
+  }
+  
+  .cta {
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 5px;
+  }
+  
+  .modal-content {
+    padding: 10px;
+    border-radius: 5px;
+    max-width: 95%;
+  }
+  
+  .account-type-tabs {
+    gap: 5px;
+    margin-bottom: 10px;
+  }
+  
+  .tab-button {
+    padding: 5px 10px;
+  }
+>>>>>>> c53998bf39f11aa080bf8a65c49607e9235794a1
 }
 
 /* Additional refinements for modals (optional) */
